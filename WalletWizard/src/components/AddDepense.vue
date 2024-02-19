@@ -4,48 +4,62 @@ import { useWalletStore } from "@/stores/wallet";
 
 const store = useWalletStore();
 
-const walletInfo = reactive({
-    debit: false,
-    credit: false,
+const walletInfoDebit = reactive({
     description: "",
     montant: 0
 });
 
-function addMontant(walletInfo) {
-    if (walletInfo.length === 0) return;
-    store.addMontant(walletInfo);
+const walletInfoCredit = reactive({
+    description: "",
+    montant: 0
+});
+
+
+function ajouterMontant(walletInfoDebit) {
+    if (walletInfoDebit.length === 0) return;
+    store.ajouterMontant(walletInfoDebit);
+
+}
+
+function soustraireMontant(walletInfoCredit) {
+    if (walletInfoCredit.length === 0) return;
+    store.soustraireMontant(walletInfoCredit);
 
 }
 
 </script>
 
 <template>
-    <form action="#" @submit.prevent="addMontant(walletInfo), $router.push('/')">
-
-        <div>
-            <label>Type d'opération :</label>
-
-            <div>
-                <span>Débit</span>
-                <input type="checkbox" id="debit" name="debit" @click="walletInfo.debit = !walletInfo.debit"
-                    :value="walletInfo.debit" />
-
-                <span>Crédit</span>
-                <input type="checkbox" id="credit" name="credit" @click="walletInfo.credit = !walletInfo.credit"
-                    :value="walletInfo.credit" />
-            </div>
-
-        </div>
-
+    <form action="#" @submit.prevent="ajouterMontant(walletInfoDebit), $router.push('/')">
+        <div>Débit</div>
         <div>
             <label for="description">Description: </label>
             <textarea id="description" cols="5" rows="3" style="resize: none" maxlength="150"
-                v-model="walletInfo.description"></textarea>
+                v-model="walletInfoDebit.description"></textarea>
         </div>
 
         <div>
-            <label for="time-cooking">Montant : </label>
-            <input type="number" id="montant" name="montant" min="1" max="1000" v-model="walletInfo.montant" />
+            <label for="montant">Montant : </label>
+            <input type="number" id="montant" name="montant" min="1" max="1000" v-model="walletInfoDebit.montant" />
+            <span> €</span>
+        </div>
+
+        <div>
+            <button>Ajouter</button>
+        </div>
+    </form>
+
+    <form action="#" @submit.prevent="soustraireMontant(walletInfoCredit), $router.push('/')">
+        <div>Crédit</div>
+        <div>
+            <label for="description">Description: </label>
+            <textarea id="description" cols="5" rows="3" style="resize: none" maxlength="150"
+                v-model="walletInfoCredit.description"></textarea>
+        </div>
+
+        <div>
+            <label for="montant">Montant : </label>
+            <input type="number" id="montant" name="montant" min="1" max="1000" v-model="walletInfoCredit.montant" />
             <span> €</span>
         </div>
 
@@ -58,22 +72,27 @@ function addMontant(walletInfo) {
 <style scoped>
 form {
     height: 50dvh;
+
     >div {
         padding: 0.5rem;
+
         >label,
         input {
             font-size: 1rem;
         }
+
         >div {
             >input {
                 margin: 1rem;
             }
         }
+
         >label {
             width: 30ch;
             color: #647eff;
             margin-right: 2rem;
         }
+
         >input,
         textarea {
             color: hsl(0, 0%, 9%);
@@ -105,5 +124,4 @@ form {
             background-color: #4f6dff;
         }
     }
-}
-</style>
+}</style>

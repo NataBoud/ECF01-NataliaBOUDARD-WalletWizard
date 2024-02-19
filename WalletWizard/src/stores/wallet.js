@@ -3,36 +3,25 @@ import { v4 as newId } from "uuid";
 
 export const useWalletStore = defineStore("wallet", {
   state: () => ({
-    walletList: [],
+    walletListDebit: [],
+    walletListCredit: []
   }),
 
-  // getters: {
-  //   getOneById: (state) => {
-  //     return (id) => state.recetteList.find((recette) => recette.id === id);
-  //   },
-  // },
-
   actions: {
-    addMontant(walletInfo) {
-      this.walletList.push({
-        ...walletInfo,
+    ajouterMontant(walletInfoDebit) {
+      this.walletListDebit.push({
+        ...walletInfoDebit,
         id: newId(),
       });
-      console.log(this.walletList);
+      console.log(this.walletListDebit);
     },
+    soustraireMontant(walletInfoCredit) {
+      this.walletListCredit.push({
+        ...walletInfoCredit,
+        id: newId(),
+      });
+      console.log(this.walletListCredit);
+    }
   },
 });
 
-
-// import { ref, computed } from 'vue'
-// import { defineStore } from 'pinia'
-
-// export const useCounterStore = defineStore('counter', () => {
-//   const count = ref(0)
-//   const doubleCount = computed(() => count.value * 2)
-//   function increment() {
-//     count.value++
-//   }
-
-//   return { count, doubleCount, increment }
-// })
