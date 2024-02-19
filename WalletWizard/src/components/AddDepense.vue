@@ -30,46 +30,54 @@ function soustraireMontant(walletInfoCredit) {
 </script>
 
 <template>
-    <form action="#" @submit.prevent="ajouterMontant(walletInfoDebit), $router.push('/')">
-        <div>Débit</div>
-        <div>
-            <label for="description">Description: </label>
-            <textarea id="description" cols="5" rows="3" style="resize: none" maxlength="150"
-                v-model="walletInfoDebit.description"></textarea>
-        </div>
+    <div class="container">
+        <form action="#" @submit.prevent="ajouterMontant(walletInfoDebit), $router.push('/')">
+            <div>Débit</div>
+            <div>
+                <label for="description">Description: </label>
+                <textarea id="description" cols="5" rows="3" style="resize: none" maxlength="150"
+                    v-model="walletInfoDebit.description"></textarea>
+            </div>
 
-        <div>
-            <label for="montant">Montant : </label>
-            <input type="number" id="montant" name="montant" min="1" max="1000" v-model="walletInfoDebit.montant" />
-            <span> €</span>
-        </div>
+            <div>
+                <label for="montant">Montant : </label>
+                <input type="number" id="montant" name="montant" min="1" max="1000" v-model="walletInfoDebit.montant" />
+                <span> €</span>
+            </div>
 
-        <div>
-            <button>Ajouter</button>
-        </div>
-    </form>
+            <div>
+                <button>Ajouter</button>
+            </div>
+        </form>
 
-    <form action="#" @submit.prevent="soustraireMontant(walletInfoCredit), $router.push('/')">
-        <div>Crédit</div>
-        <div>
-            <label for="description">Description: </label>
-            <textarea id="description" cols="5" rows="3" style="resize: none" maxlength="150"
-                v-model="walletInfoCredit.description"></textarea>
-        </div>
+        <form action="#" @submit.prevent="soustraireMontant(walletInfoCredit), $router.push('/')">
+            <div>Crédit</div>
+            <div>
+                <label for="description">Description: </label>
+                <textarea id="description" cols="5" rows="3" style="resize: none" maxlength="150"
+                    v-model="walletInfoCredit.description"></textarea>
+            </div>
 
-        <div>
-            <label for="montant">Montant : </label>
-            <input type="number" id="montant" name="montant" min="1" max="1000" v-model="walletInfoCredit.montant" />
-            <span> €</span>
-        </div>
+            <div>
+                <label for="montant">Montant : </label>
+                <input type="number" id="montant" name="montant" min="1" max="1000" v-model="walletInfoCredit.montant" />
+                <span> €</span>
+            </div>
 
-        <div>
-            <button>Ajouter</button>
-        </div>
-    </form>
+            <div>
+                <button>Ajouter</button>
+            </div>
+        </form>
+    </div>
 </template>
 
 <style scoped>
+.container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+}
+
 form {
     height: 50dvh;
 
@@ -89,7 +97,7 @@ form {
 
         >label {
             width: 30ch;
-            color: #647eff;
+            color: hsla(160, 100%, 37%, 1);
             margin-right: 2rem;
         }
 
@@ -112,7 +120,7 @@ form {
             border-radius: 0.5rem;
             box-sizing: border-box;
             padding: 0.7em 1.4em;
-            background: #647eff;
+            background: hsla(160, 100%, 37%, 1);
             margin: 2rem 0 0 auto;
             transition: all 400ms ease;
             box-shadow: inset 1px 1px 3px rgba(255, 255, 255, 0.4),
@@ -121,7 +129,8 @@ form {
 
         >button:last-child:hover {
             cursor: pointer;
-            background-color: #4f6dff;
+            background-color: rgb(2, 168, 113);
         }
     }
-}</style>
+}
+</style>
