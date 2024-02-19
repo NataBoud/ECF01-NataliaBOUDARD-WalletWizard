@@ -1,6 +1,10 @@
+<script setup>
+import AddDepense from '../components/AddDepense.vue'
+</script>
+
 <template>
   <div class="about">
-    <h1>This is an about page</h1>
+    <AddDepense />
   </div>
 </template>
 
