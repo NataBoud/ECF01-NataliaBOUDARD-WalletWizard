@@ -1,13 +1,12 @@
 <script setup>
-import { RouterLink, RouterView } from 'vue-router'
-
+import { RouterView } from "vue-router";
 </script>
 <template>
   <header>
     <nav>
       <h1>Wallet Wizard</h1>
-      <RouterLink to="/">Home</RouterLink>
-      <RouterLink to="/ajout">Ajouter</RouterLink>
+      <!-- <RouterLink to="/">Home</RouterLink> -->
+     
     </nav>
   </header>
 
@@ -17,27 +16,20 @@ import { RouterLink, RouterView } from 'vue-router'
 <style scoped>
 header {
   line-height: 1.5;
-  display: flex;
-  padding-bottom: 2rem;
 
-  >nav {
-  width: 100%;
-  text-align: center;
-  margin-top: 1rem;
+  > nav {
+    width: 100%;
+    width: 100%;
+    font-size: 16px;
+    text-align: center;
 
-  >h1 {
-    font-size: 36px;
+    > h1 {
+      font-size: 36px;
+      color: hsl(163, 85%, 21%);
+      font-weight: 800;
+      margin-bottom: .7rem;
+    }
   }
-
-  }
-
-}
-
-nav {
-  width: 100%;
-  font-size: 16px;
-  text-align: center;
-  margin-top: 2rem;
 }
 
 nav a.router-link-exact-active {
@@ -57,5 +49,4 @@ nav a {
 nav a:first-of-type {
   border: 0;
 }
-
 </style>
